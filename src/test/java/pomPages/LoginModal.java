@@ -10,7 +10,11 @@ public class LoginModal {
     public Button loginButton= new Button(By.xpath("//input[@name='ctl00$MainContent$LoginControl1$ButtonLogin']"));
 
     public TextBox name = new TextBox(By.xpath("//input[@id=\"ctl00_MainContent_SignupControl1_TextBoxFullName\"]"));
-//    public TextBox email = new TextBox()
+    public TextBox email = new TextBox(By.xpath("//input[@id=\"ctl00_MainContent_SignupControl1_TextBoxEmail\"]"));
+    public TextBox pwd = new TextBox(By.xpath("//input[@id=\"ctl00_MainContent_SignupControl1_TextBoxPassword\"]"));
+    public Button checkBox = new Button(By.xpath("//input[@id=\"ctl00_MainContent_SignupControl1_CheckBoxTerms\"]"));
+    public Button signupButton = new Button(By.xpath("//input[@id=\"ctl00_MainContent_SignupControl1_ButtonSignup\"]"));
+
 
     public LoginModal(){}
 

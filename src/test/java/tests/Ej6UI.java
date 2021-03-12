@@ -1,5 +1,6 @@
 package tests;
 
+import io.cucumber.java.bs.A;
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Test;
@@ -9,35 +10,26 @@ import pomPages.MainPage;
 import pomPages.MenuSection;
 import singletonSession.Session;
 
-import java.util.Random;
-
-public class Ej5UI {
-
-    Random r = new Random();
+public class Ej6UI {
 
     MainPage mainPage = new MainPage();
     LoginModal loginModal = new LoginModal();
     CenterSection centerSection = new CenterSection();
     MenuSection menuSection = new MenuSection();
-    String user = "mautest"+r.nextInt(1000)+"@mautest"+r.nextInt(1000)+".com";
+    String user = "mautest@mautest.com";
     String pwd = "1234";
 
     @Test
-    public void verify_signin() throws InterruptedException {
+    public void verify_change_name() throws InterruptedException {
         Session.getSession().getDriver().get("http://todo.ly/");
+        mainPage.loginImage.click();
+        loginModal.loginAction(user, pwd);
 
-        mainPage.signupImg.click();
-        loginModal.name.set("Mau");
-        loginModal.email.set(user);
-        loginModal.pwd.set(pwd);
+        Thread.sleep(2000);
 
-        loginModal.checkBox.click();
-        Thread.sleep(3000);
-        loginModal.signupButton.click();
+        menuSection.logoutButton.click();
 
-        Assert.assertTrue("No se pudo iniciar session", menuSection.logoutButton.controlIsDisplayed());
-
-
+        Assert.assertTrue("No se mudo desloggear", mainPage.loginImage.controlIsDisplayed());
     }
 
     @After
